@@ -1,4 +1,4 @@
-NAME = 
+NAME = bureaucrat
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98
 I_FLAGS = -I$(INCS_DIR)
@@ -7,13 +7,13 @@ OBJS_DIR = objs
 SRCS_DIR = srcs
 INCS_DIR = includes
 
-FILES = 
+FILES = main Bureaucrat GradeTooHighException GradeTooLowException
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(addsuffix .cpp, $(FILES)))
 OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(FILES)))
 DEPS := $(OBJS:.o=.d)
 
-HEADERS = 
+HEADERS = Bureaucrat.hpp GradeTooHighException.hpp GradeTooLowException.hpp
 HEADERS := $(addprefix $(INCS_DIR)/, $(HEADERS))
 
 all: $(NAME)

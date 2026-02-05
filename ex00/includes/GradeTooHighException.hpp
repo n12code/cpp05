@@ -6,7 +6,7 @@
 /*   By: nbodin <nbodin@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 16:39:19 by nbodin            #+#    #+#             */
-/*   Updated: 2026/02/05 18:17:34 by nbodin           ###   ########lyon.fr   */
+/*   Updated: 2026/02/06 00:15:31 by nbodin           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class GradeTooHighException : public std::exception
 {
     public:
         GradeTooHighException();
-        virtual ~GradeTooHighException();
+        virtual ~GradeTooHighException() throw();
         virtual const char* what() const throw();
 };
 
