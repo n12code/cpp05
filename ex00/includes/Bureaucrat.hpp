@@ -6,7 +6,7 @@
 /*   By: nbodin <nbodin@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 15:46:58 by nbodin            #+#    #+#             */
-/*   Updated: 2026/02/06 00:26:40 by nbodin           ###   ########lyon.fr   */
+/*   Updated: 2026/02/06 23:30:20 by nbodin           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BUREAUCRAT
 
 # include <string>
+# include <iostream>
+# include <exception>
 
 class Bureaucrat
 {
@@ -22,18 +24,32 @@ class Bureaucrat
         int               _grade;
         
     public:
-        Bureaucrat(const std::string &name = "", const int &grade = 150);
+        Bureaucrat();
+        Bureaucrat(const std::string &name, const int &grade);
         ~Bureaucrat();
         Bureaucrat(const Bureaucrat &obj);
-        Bureaucrat operator=(const Bureaucrat &obj);
         
-        
-        //<<overload
+        Bureaucrat  operator=(const Bureaucrat &obj);
 
-        //get anme
-        //get grade
-        //increment 3 -> 2 (1 is the highest)
-        //decrement 3 -> 4 (150 the lowest)
+        std::string getName() const;
+        int         getGrade() const;
+        void        increment();
+        void        decrement();
+        
+        class GradeTooHighException : public std::exception {
+            public :
+                virtual const char* what() const throw() {
+                    return ("Grade too high!");
+                }
+        };
+        class GradeTooLowException : public std::exception {
+            public :
+                virtual const char* what() const throw() {
+                    return ("Grade too low!");
+                }
+        };
 };
+
+std::ostream&   operator<<(std::ostream &os, const Bureaucrat &obj);
 
 #endif

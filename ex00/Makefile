@@ -7,13 +7,13 @@ OBJS_DIR = objs
 SRCS_DIR = srcs
 INCS_DIR = includes
 
-FILES = main Bureaucrat GradeTooHighException GradeTooLowException
+FILES = main Bureaucrat
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(addsuffix .cpp, $(FILES)))
 OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(FILES)))
 DEPS := $(OBJS:.o=.d)
 
-HEADERS = Bureaucrat.hpp GradeTooHighException.hpp GradeTooLowException.hpp
+HEADERS = Bureaucrat.hpp
 HEADERS := $(addprefix $(INCS_DIR)/, $(HEADERS))
 
 all: $(NAME)
